@@ -1,0 +1,15 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /var/www/html/index.html
+    defer: true
+    content: |
+      <!doctype html>
+      <html lang="en">
+      <head><title>Azure Terraform Project 3</title></head>
+      <body><h1>Nginx deployed on Azure with Terraform</h1></body>
+      </html>
+runcmd:
+  - systemctl enable --now nginx
